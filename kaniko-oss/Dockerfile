@@ -17,3 +17,5 @@ COPY --from=curl /curl /busybox/curl
 # Semaphore's toolbox download needs /tmp and a home dir; the scratch-based image has neither
 COPY --from=curl /tmp /tmp
 COPY --from=curl /root /root
+# The static curl looks in /etc/ssl; kaniko keeps its CA bundle under /kaniko/ssl/certs
+ENV CURL_CA_BUNDLE=/kaniko/ssl/certs/ca-certificates.crt SSL_CERT_FILE=/kaniko/ssl/certs/ca-certificates.crt
