@@ -14,3 +14,6 @@ COPY passwd /etc/passwd
 COPY group /etc/group
 # Semaphore downloads its toolbox (artifact, retry, ...) with curl; static build from moparisthebest/static-curl
 COPY --from=curl /curl /busybox/curl
+# Semaphore's toolbox download needs /tmp and a home dir; the scratch-based image has neither
+COPY --from=curl /tmp /tmp
+COPY --from=curl /root /root
