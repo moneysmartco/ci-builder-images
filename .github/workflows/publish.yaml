@@ -17,10 +17,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: kaniko-oss
-            tag: v1.29.0-bash2
-          - name: kaniko-gitlab
-            tag: v1.25.19-1-bash2
           - name: buildkit-rootless
             tag: v0.33.1-bash2
     steps:
